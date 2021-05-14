@@ -5,18 +5,29 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     private State currentState;
-    private StateHandler startHandler;
-    private StateHandler playHandler;
-    private StateHandler pauseHandler;
-    private StateHandler winHandler;
-    private StateHandler gameOverHandler;
+    [SerializeField] private StateHandler startHandler;
+    [SerializeField] private StateHandler playHandler;
+    [SerializeField] private StateHandler pauseHandler;
+    [SerializeField] private StateHandler winHandler;
+    [SerializeField] private StateHandler gameOverHandler;
 
+    void Awake()
+    {
+        GameObject[] gameControllers = GameObject.FindGameObjectsWithTag("GameController");
+        if (gameControllers.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+        currentState = State.Start;
+    }
+    
     public void ResetGame()
     {
         currentState = State.Start;
     }
 
-    public void RegisterStateHandlers(State state, StateHandler stateHandler)
+    public void RegisterStateHandler(State state, StateHandler stateHandler)
     {
         switch (state)
         {
@@ -35,28 +46,54 @@ public class StateMachine : MonoBehaviour
 
     public bool TriggerTransition(Transition transition)
     {
+        Debug.Log("triggered transition " + transition + " from " + currentState);
         switch (transition)
         {
-            case Transition.StartGame: 
-                StartTransition(State.Start);
-                return true;
+            case Transition.StartGame:
+                if (currentState == State.Start || currentState == State.Pause
+                                                || currentState == State.Win || currentState == State.GameOver)
+                {
+                    MakeTransition(State.Start);
+                    return true;
+                }
+
+                return false;
             case Transition.PlayGame:
-                StartTransition(State.Play);
-                return true;
+                if (currentState == State.Play || currentState == State.Start
+                                               || currentState == State.Pause)
+                {
+                    MakeTransition(State.Play);
+                    return true;
+                }
+
+                return false;
             case Transition.PauseGame:
-                StartTransition(State.Pause);
-                return true;
+                if (currentState == State.Pause || currentState == State.Play)
+                {
+                    MakeTransition(State.Pause);
+                    return true;
+                }
+
+                return false;
             case Transition.WinGame:
-                StartTransition(State.Win);
-                return true;
+                if (currentState == State.Win || currentState == State.Play)
+                {
+                    MakeTransition(State.Win);
+                    return true;
+                }
+                return false;
             case Transition.LoseGame:
-                StartTransition(State.GameOver);
-                return true;
+                if (currentState == State.GameOver || currentState == State.Play)
+                {
+                    MakeTransition(State.GameOver);
+                    return true;
+                }
+                return false;
             default: return false;
         }
     }
 
-    public void StartTransition(State nextState)
+    public void MakeTransition(State nextState)
     {
         if (currentState == nextState)
         {
@@ -64,6 +101,7 @@ public class StateMachine : MonoBehaviour
         }
         StateHandler currentStateHandler = GetStateHandler(currentState);
         StateHandler nextStateHandler = GetStateHandler(nextState);
+        PrintTransition(nextState);
         currentStateHandler?.OnExit();
         nextStateHandler?.OnEnter();
         currentState = nextState;
@@ -80,5 +118,10 @@ public class StateMachine : MonoBehaviour
             case State.GameOver: return gameOverHandler;
             default: return null;
         }
+    }
+
+    private void PrintTransition(State newState)
+    {
+        Debug.Log("Transitioning from " + currentState + "  to " + newState);
     }
 }
