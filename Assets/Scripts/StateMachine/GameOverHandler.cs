@@ -13,6 +13,11 @@ namespace UnityTemplateProjects
             {
                 stateMachine.RegisterStateHandler(State.GameOver, this);
             }
+
+            gameOverScreen = transform.GetComponent<CanvasGroup>();
+            gameOverScreen.alpha = 0f;
+            gameOverScreen.interactable = false;
+            gameOverScreen.blocksRaycasts = false;
         }
 
         public override void OnEnter()
@@ -20,6 +25,7 @@ namespace UnityTemplateProjects
             Time.timeScale = 0f;
             gameOverScreen.alpha = 1f;
             gameOverScreen.interactable = true;
+            gameOverScreen.blocksRaycasts = true;
         }
 
         public override void OnExit()
@@ -27,6 +33,12 @@ namespace UnityTemplateProjects
             Time.timeScale = 1f;
             gameOverScreen.alpha = 0f;
             gameOverScreen.interactable = false;
+            gameOverScreen.blocksRaycasts = false;
+        }
+
+        public void ReturnToMainMenu()
+        {
+            stateMachine.TriggerTransition(Transition.StartGame);
         }
     }
 }

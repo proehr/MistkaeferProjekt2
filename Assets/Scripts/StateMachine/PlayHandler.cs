@@ -28,7 +28,20 @@ namespace UnityTemplateProjects
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 stateMachine.TriggerTransition(Transition.PauseGame);
-            }        
+            }
+
+            if (transform.position.y < -20)
+            {
+                stateMachine.TriggerTransition(Transition.LoseGame);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Finish")
+            {
+                stateMachine.TriggerTransition(Transition.WinGame);
+            }
         }
     }
 }

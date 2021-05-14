@@ -13,15 +13,17 @@ namespace UnityTemplateProjects
                 stateMachine.RegisterStateHandler(State.Pause, this);
             }
 
-            pauseMenu = GetComponent<CanvasGroup>();
+            pauseMenu = transform.GetComponent<CanvasGroup>();
             pauseMenu.alpha = 0f;
             pauseMenu.interactable = false;
+            pauseMenu.blocksRaycasts = false;
         }
         public override void OnEnter()
         {
             Time.timeScale = 0f;
             pauseMenu.interactable = true;
             pauseMenu.alpha = 1f;
+            pauseMenu.blocksRaycasts = true;
         }
 
         public override void OnExit()
@@ -29,6 +31,7 @@ namespace UnityTemplateProjects
             Time.timeScale = 1f;
             pauseMenu.interactable = false;
             pauseMenu.alpha = 0f;
+            pauseMenu.blocksRaycasts = false;
         }
 
         public void ResumeGame()
