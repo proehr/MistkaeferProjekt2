@@ -5,7 +5,7 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     private State currentState;
-    [SerializeField] private StateHandler startHandler;
+    [SerializeField] private StateHandler mainMenuHandler;
     [SerializeField] private StateHandler playHandler;
     [SerializeField] private StateHandler pauseHandler;
     [SerializeField] private StateHandler winHandler;
@@ -19,19 +19,19 @@ public class StateMachine : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        currentState = State.Start;
+        currentState = State.MainMenu;
     }
     
     public void ResetGame()
     {
-        currentState = State.Start;
+        currentState = State.MainMenu;
     }
 
     public void RegisterStateHandler(State state, StateHandler stateHandler)
     {
         switch (state)
         {
-            case State.Start: startHandler = stateHandler;
+            case State.MainMenu: mainMenuHandler = stateHandler;
                 break;
             case State.Play: playHandler = stateHandler;
                 break;
@@ -50,16 +50,16 @@ public class StateMachine : MonoBehaviour
         switch (transition)
         {
             case Transition.StartGame:
-                if (currentState == State.Start || currentState == State.Pause
+                if (currentState == State.MainMenu || currentState == State.Pause
                                                 || currentState == State.Win || currentState == State.GameOver)
                 {
-                    MakeTransition(State.Start);
+                    MakeTransition(State.MainMenu);
                     return true;
                 }
 
                 return false;
             case Transition.PlayGame:
-                if (currentState == State.Play || currentState == State.Start
+                if (currentState == State.Play || currentState == State.MainMenu
                                                || currentState == State.Pause)
                 {
                     MakeTransition(State.Play);
@@ -111,7 +111,7 @@ public class StateMachine : MonoBehaviour
     {
         switch (state)
         {
-            case State.Start: return startHandler;
+            case State.MainMenu: return mainMenuHandler;
             case State.Play: return playHandler;
             case State.Pause: return pauseHandler;
             case State.Win: return winHandler;

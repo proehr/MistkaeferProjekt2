@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum State
 {
-    Start,
+    MainMenu,
     Play,
     Pause,
     Win,

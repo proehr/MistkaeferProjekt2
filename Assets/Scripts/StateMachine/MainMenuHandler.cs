@@ -3,14 +3,14 @@ using UnityEngine.SceneManagement;
 
 namespace UnityTemplateProjects
 {
-    public class StartHandler : StateHandler
+    public class MainMenuHandler : StateHandler
     {
         public override void Awake()
         {
             stateMachine = FindObjectOfType<StateMachine>();
             if (stateMachine != null)
             {
-                stateMachine.RegisterStateHandler(State.Start, this);
+                stateMachine.RegisterStateHandler(State.MainMenu, this);
             }
         }
         public override void OnEnter()
