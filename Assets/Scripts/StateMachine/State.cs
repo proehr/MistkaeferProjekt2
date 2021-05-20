@@ -5,6 +5,7 @@ using UnityEngine;
 public enum State
 {
     MainMenu,
+    SetUpGame,
     Play,
     Pause,
     Win,
