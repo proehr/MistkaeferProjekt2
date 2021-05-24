@@ -47,6 +47,8 @@ MonoBehaviour:
   size: {x: 10, y: 10}
   sizeCells: 3
   cellPrefab: {fileID: -2394688708770319332, guid: 0aaeae50c91277a448f9a65fa6e15881, type: 3}
+  startCellPrefab: {fileID: -2394688708770319332, guid: be337a50a6ae340b49ec2fe0240e4288, type: 3}
+  finishCellPrefab: {fileID: -2394688708770319332, guid: c7b06d9ffaaf146459126e98bce76e35, type: 3}
   wallPrefab: {fileID: 3685213377487026521, guid: 3f73fe0a4e5526c44bf7242ad9422b88, type: 3}
   buttressPrefab: {fileID: 1646379619264186, guid: 989146ca3d18d6f4295770ec5a1acf92, type: 3}
 --- !u!114 &-1079826128047031226
