@@ -6,7 +6,6 @@ public class StateMachine : MonoBehaviour
 {
     private State currentState;
     [SerializeField] private StateHandler mainMenuHandler;
-    [SerializeField] private StateHandler setUpHandler;
     [SerializeField] private StateHandler playHandler;
     [SerializeField] private StateHandler pauseHandler;
     [SerializeField] private StateHandler winHandler;
@@ -34,8 +33,6 @@ public class StateMachine : MonoBehaviour
         {
             case State.MainMenu: mainMenuHandler = stateHandler;
                 break;
-            case State.SetUpGame: setUpHandler = stateHandler;
-                break;
             case State.Play: playHandler = stateHandler;
                 break;
             case State.Pause: pauseHandler = stateHandler;
@@ -53,16 +50,16 @@ public class StateMachine : MonoBehaviour
         switch (transition)
         {
             case Transition.StartGame:
-                if (currentState == State.SetUpGame || currentState == State.MainMenu
+                if (currentState == State.MainMenu || currentState == State.Pause
                                                 || currentState == State.Win || currentState == State.GameOver)
                 {
-                    MakeTransition(State.SetUpGame);
+                    MakeTransition(State.MainMenu);
                     return true;
                 }
 
                 return false;
             case Transition.PlayGame:
-                if (currentState == State.Play || currentState == State.SetUpGame
+                if (currentState == State.Play || currentState == State.MainMenu
                                                || currentState == State.Pause)
                 {
                     MakeTransition(State.Play);
@@ -92,14 +89,6 @@ public class StateMachine : MonoBehaviour
                     return true;
                 }
                 return false;
-            case Transition.EnterMainMenu:
-                if (currentState == State.MainMenu || currentState == State.Pause
-                                                   || currentState == State.Win || currentState == State.GameOver)
-                {
-                    MakeTransition(State.MainMenu);
-                    return true;
-                }
-                return false;
             default: return false;
         }
     }
@@ -123,7 +112,6 @@ public class StateMachine : MonoBehaviour
         switch (state)
         {
             case State.MainMenu: return mainMenuHandler;
-            case State.SetUpGame: return setUpHandler;
             case State.Play: return playHandler;
             case State.Pause: return pauseHandler;
             case State.Win: return winHandler;

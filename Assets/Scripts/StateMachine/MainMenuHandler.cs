@@ -23,6 +23,7 @@ namespace UnityTemplateProjects
 
         public override void OnExit()
         {
+            //generate GameLevel?
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
