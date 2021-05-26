@@ -12,6 +12,8 @@ namespace Maze
         [SerializeField] protected float sizeCells = 3;
 
         [SerializeField] protected MazeCell cellPrefab = null;
+        [SerializeField] protected MazeCell startCellPrefab = null;
+        [SerializeField] protected MazeCell finishCellPrefab = null;
         [SerializeField] protected MazeCellWall wallPrefab = null;
         [SerializeField] protected GameObject buttressPrefab = null;
 
@@ -39,7 +41,16 @@ namespace Maze
                 cells[x] = new MazeCell[size.y];
                 for (int y = 0; y < size.y; y++)
                 {
-                    CreateAndPlaceCell(x, y);
+                    if (x == 0 && y == 0)
+                    {
+                        CreateAndPlaceCell(x, y, startCellPrefab);
+                    } else if (x == size.x - 1 && y == size.y - 1)
+                    {
+                        CreateAndPlaceCell(x, y, finishCellPrefab);
+                    } else
+                    {
+                        CreateAndPlaceCell(x, y, cellPrefab);
+                    }
                 }
             }
         }
@@ -58,9 +69,9 @@ namespace Maze
             }
         }
 
-        public void CreateAndPlaceCell(int x, int y)
+        public void CreateAndPlaceCell(int x, int y, MazeCell prefab)
         {
-            MazeCell cell = Instantiate(cellPrefab, transform, true) as MazeCell;
+            MazeCell cell = Instantiate(prefab, transform, true) as MazeCell;
             cell.Initialize(x, y);
 
             cell.transform.localPosition = new Vector3(sizeCells * (x - size.x / 2), 0f, sizeCells * (y - size.y / 2));
