@@ -14,7 +14,7 @@ public class StateMachine : MonoBehaviour
 
     public static void TriggerTransition(Transition transition)
     {
-        Debug.Log("triggered transition " + transition + " from " + currentState);
+       
         switch (transition)
         {
             case Transition.EnterMainMenu:
@@ -28,6 +28,7 @@ public class StateMachine : MonoBehaviour
                 if (currentState == States.setUp || currentState == States.mainMenu
                                                     || currentState == States.win)
                 {
+                    Debug.Log("triggered transition " + transition + " from " + currentState);
                     MakeTransition(States.setUp);
                 }
                 break;
@@ -62,8 +63,9 @@ public class StateMachine : MonoBehaviour
 
     public static void MakeTransition(State nextState)
     {
-        if (currentState == nextState)
+        if (currentState.Equals(nextState))
         {
+            Debug.Log(nextState);
             return;
         }
         PrintTransition(nextState);

@@ -457,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3757985161f41e3a5f26cea00326ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateMachine: {fileID: 0}
 --- !u!114 &2925894347326000101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,7 +693,8 @@ GameObject:
   - component: {fileID: 2925894348352020224}
   - component: {fileID: 2925894348352020231}
   - component: {fileID: 2925894348352020230}
-  - component: {fileID: 2925894348352020229}
+  - component: {fileID: 1709584732308045599}
+  - component: {fileID: 1793157770422987718}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -784,7 +784,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2925894348352020229
+--- !u!225 &1709584732308045599
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925894348352020228}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1793157770422987718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -793,10 +805,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2925894348352020228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95bb6966f6864674a06862d5bae218a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 4038b8250ae2470d89f874ed1d121371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateMachine: {fileID: 0}
+  canvasGroup: {fileID: 1709584732308045599}
 --- !u!1 &2925894348516804529
 GameObject:
   m_ObjectHideFlags: 0
