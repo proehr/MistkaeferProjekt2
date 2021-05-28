@@ -1,138 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityTemplateProjects;
 
 public class StateMachine : MonoBehaviour
 {
-    private State currentState;
-    [SerializeField] private StateHandler mainMenuHandler;
-    [SerializeField] private StateHandler setUpHandler;
-    [SerializeField] private StateHandler playHandler;
-    [SerializeField] private StateHandler pauseHandler;
-    [SerializeField] private StateHandler winHandler;
-    [SerializeField] private StateHandler gameOverHandler;
+    private static State currentState = States.mainMenu;
 
-    void Awake()
+    public static void ResetGame()
     {
-        GameObject[] gameControllers = GameObject.FindGameObjectsWithTag("GameController");
-        if (gameControllers.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
-        currentState = State.MainMenu;
-    }
-    
-    public void ResetGame()
-    {
-        currentState = State.MainMenu;
+        currentState = States.mainMenu;
     }
 
-    public void RegisterStateHandler(State state, StateHandler stateHandler)
-    {
-        switch (state)
-        {
-            case State.MainMenu: mainMenuHandler = stateHandler;
-                break;
-            case State.SetUpGame: setUpHandler = stateHandler;
-                break;
-            case State.Play: playHandler = stateHandler;
-                break;
-            case State.Pause: pauseHandler = stateHandler;
-                break;
-            case State.Win: winHandler = stateHandler;
-                break;
-            case State.GameOver: gameOverHandler = stateHandler;
-                break;
-        }
-    }
-
-    public bool TriggerTransition(Transition transition)
+    public static void TriggerTransition(Transition transition)
     {
         Debug.Log("triggered transition " + transition + " from " + currentState);
         switch (transition)
         {
-            case Transition.StartGame:
-                if (currentState == State.SetUpGame || currentState == State.MainMenu
-                                                || currentState == State.Win || currentState == State.GameOver)
-                {
-                    MakeTransition(State.SetUpGame);
-                    return true;
-                }
-
-                return false;
-            case Transition.PlayGame:
-                if (currentState == State.Play || currentState == State.SetUpGame
-                                               || currentState == State.Pause)
-                {
-                    MakeTransition(State.Play);
-                    return true;
-                }
-
-                return false;
-            case Transition.PauseGame:
-                if (currentState == State.Pause || currentState == State.Play)
-                {
-                    MakeTransition(State.Pause);
-                    return true;
-                }
-
-                return false;
-            case Transition.WinGame:
-                if (currentState == State.Win || currentState == State.Play)
-                {
-                    MakeTransition(State.Win);
-                    return true;
-                }
-                return false;
-            case Transition.LoseGame:
-                if (currentState == State.GameOver || currentState == State.Play)
-                {
-                    MakeTransition(State.GameOver);
-                    return true;
-                }
-                return false;
             case Transition.EnterMainMenu:
-                if (currentState == State.MainMenu || currentState == State.Pause
-                                                   || currentState == State.Win || currentState == State.GameOver)
+                if (currentState == States.mainMenu || currentState == States.pause
+                                                || currentState == States.win || currentState == States.gameOver)
                 {
-                    MakeTransition(State.MainMenu);
-                    return true;
+                    MakeTransition(States.mainMenu);
                 }
-                return false;
-            default: return false;
+                break;
+            case Transition.SetUpGame:
+                if (currentState == States.setUp || currentState == States.mainMenu
+                                                    || currentState == States.win)
+                {
+                    MakeTransition(States.setUp);
+                }
+                break;
+            case Transition.PlayGame:
+                if (currentState == States.play || currentState == States.mainMenu
+                                               || currentState == States.pause)
+                {
+                    MakeTransition(States.play);
+                }
+                break;
+            case Transition.PauseGame:
+                if (currentState == States.pause || currentState == States.play)
+                {
+                    MakeTransition(States.pause);
+                }
+                break;
+            case Transition.WinGame:
+                if (currentState == States.win || currentState == States.play)
+                {
+                    MakeTransition(States.win);
+                }
+                break;
+            case Transition.LoseGame:
+                if (currentState == States.gameOver || currentState == States.play)
+                {
+                    MakeTransition(States.gameOver);
+                }
+
+                break;
         }
     }
 
-    public void MakeTransition(State nextState)
+    public static void MakeTransition(State nextState)
     {
         if (currentState == nextState)
         {
             return;
         }
-        StateHandler currentStateHandler = GetStateHandler(currentState);
-        StateHandler nextStateHandler = GetStateHandler(nextState);
         PrintTransition(nextState);
-        currentStateHandler?.OnExit();
-        nextStateHandler?.OnEnter();
+        currentState?.OnExit();
+        nextState?.OnEnter();
         currentState = nextState;
     }
 
-    public StateHandler GetStateHandler(State state)
-    {
-        switch (state)
-        {
-            case State.MainMenu: return mainMenuHandler;
-            case State.SetUpGame: return setUpHandler;
-            case State.Play: return playHandler;
-            case State.Pause: return pauseHandler;
-            case State.Win: return winHandler;
-            case State.GameOver: return gameOverHandler;
-            default: return null;
-        }
-    }
-
-    private void PrintTransition(State newState)
+    private static void PrintTransition(State newState)
     {
         Debug.Log("Transitioning from " + currentState + "  to " + newState);
     }

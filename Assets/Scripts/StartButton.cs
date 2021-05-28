@@ -15,7 +15,7 @@ public class StartButton : MonoBehaviour
 
     public void StartGame()
     {
-        stateMachine.TriggerTransition(Transition.PlayGame);
+        //stateMachine.TriggerTransition(Transition.EnterMainMenu);
         Debug.Log("starting game");
     }
 }

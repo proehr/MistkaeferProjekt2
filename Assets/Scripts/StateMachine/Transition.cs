@@ -5,7 +5,7 @@ using UnityEngine;
 public enum Transition
 {
     EnterMainMenu,
-    StartGame,
+    SetUpGame,
     PlayGame,
     PauseGame,
     WinGame,
