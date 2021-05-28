@@ -5,6 +5,7 @@ namespace UnityTemplateProjects
 {
     public class MainMenuHandler : StateHandler
     {
+        [SerializeField] private CanvasGroup mainMenu;
         public override void Awake()
         {
             stateMachine = FindObjectOfType<StateMachine>();
@@ -12,19 +13,24 @@ namespace UnityTemplateProjects
             {
                 stateMachine.RegisterStateHandler(State.MainMenu, this);
             }
+            mainMenu = transform.GetComponent<CanvasGroup>();
+            Time.timeScale = 0f;
+            
         }
         public override void OnEnter()
         {
-            if (SceneManager.GetActiveScene().buildIndex != 0)
-            {
-                SceneManager.LoadScene(0);
-            }
+            Time.timeScale = 0f;
+            mainMenu.alpha = 1f;
+            mainMenu.interactable = true;
+            mainMenu.blocksRaycasts = true;
         }
 
         public override void OnExit()
         {
-            //generate GameLevel?
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Time.timeScale = 1f;
+            mainMenu.alpha = 0f;
+            mainMenu.interactable = false;
+            mainMenu.blocksRaycasts = false;
         }
     }
 }
