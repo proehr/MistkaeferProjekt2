@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5392916196517289212}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityTemplateProjects.GameOverHandler, Assembly-CSharp
         m_MethodName: ReturnToMainMenu
         m_Mode: 1
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 5392916196517289209}
   - component: {fileID: 5392916196517289208}
   - component: {fileID: 5392916196517289213}
-  - component: {fileID: 5392916196517289212}
+  - component: {fileID: 1744534824}
   m_Layer: 5
   m_Name: GameOverCanvas
   m_TagString: Untagged
@@ -326,7 +326,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5392916196517289212
+--- !u!114 &1744534824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -335,11 +335,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5392916196517289207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d96e794e7bea4869835d5d49c812dc08, type: 3}
+  m_Script: {fileID: 11500000, guid: d62533297ad24a9ab6cdb2da5100e329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateMachine: {fileID: 0}
-  gameOverScreen: {fileID: 0}
+  canvasGroup: {fileID: 5392916196517289213}
 --- !u!1 &5392916197195317688
 GameObject:
   m_ObjectHideFlags: 0

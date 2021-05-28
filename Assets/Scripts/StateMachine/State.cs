@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum State
+public abstract class State
 {
-    MainMenu,
-    Play,
-    Pause,
-    Win,
-    GameOver
+    
+    public delegate void EnterEvent();
+    public delegate void ExitEvent();
+    
+    public abstract void OnEnter();
+    public abstract void OnExit();
 }
