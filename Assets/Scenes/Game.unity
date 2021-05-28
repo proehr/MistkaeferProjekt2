@@ -907,6 +907,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4791314651541707240, guid: 12fa5d302f52942b79532890ef8218f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2925894347326000100, guid: 12fa5d302f52942b79532890ef8218f0, type: 3}
     - {fileID: 2925894347326000101, guid: 12fa5d302f52942b79532890ef8218f0, type: 3}

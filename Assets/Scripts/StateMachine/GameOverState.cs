@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverState : State
 {
+    private static State instance;
     public static event EnterEvent OnEnterGameOverEvent;
     public static event ExitEvent OnExitGameOverEvent;
 

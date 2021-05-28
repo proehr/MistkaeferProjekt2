@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PauseState : State
 {
+    private static State instance;
     public static event EnterEvent OnEnterPauseEvent;
     public static event ExitEvent OnExitPauseEvent;
 

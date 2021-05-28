@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class WinState : State
 {
+    private static State instance;
     public static event EnterEvent OnEnterWinEvent;
     public static event ExitEvent OnExitWinEvent;
 

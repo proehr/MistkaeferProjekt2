@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class State
 {
-    private protected static State instance;
+    
     public delegate void EnterEvent();
     public delegate void ExitEvent();
     

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayState : State
 {
+    private static State instance;
     public static event EnterEvent OnEnterPlayEvent;
     public static event ExitEvent OnExitPlayEvent;
 

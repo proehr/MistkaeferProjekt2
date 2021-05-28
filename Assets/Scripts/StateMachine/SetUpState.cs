@@ -6,6 +6,7 @@ namespace UnityTemplateProjects
 {
     public class SetUpState : State
     {
+        private static State instance;
         public static event EnterEvent OnEnterSetUpEvent;
         public static event ExitEvent OnExitSetUpEvent;
 

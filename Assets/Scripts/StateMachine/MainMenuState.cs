@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
     public class MainMenuState : State
     {
+        private static State instance;
         public static event EnterEvent OnEnterMainMenuEvent;
         public static event ExitEvent OnExitMainMenuEvent;
 

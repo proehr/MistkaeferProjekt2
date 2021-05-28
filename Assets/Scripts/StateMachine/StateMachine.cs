@@ -14,7 +14,7 @@ public class StateMachine : MonoBehaviour
 
     public static void TriggerTransition(Transition transition)
     {
-       
+        Debug.Log("tranistion called");
         switch (transition)
         {
             case Transition.EnterMainMenu:
