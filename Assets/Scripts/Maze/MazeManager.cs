@@ -64,5 +64,10 @@ namespace Maze
             mazeSize = size;
         }
 
+        public void setHoleAmount(int amount)
+        {
+            holeAmount = amount;
+        }
+
     }
 }
