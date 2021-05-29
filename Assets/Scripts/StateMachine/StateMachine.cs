@@ -8,7 +8,6 @@ public static class StateMachine
 
     public static void TriggerTransition(Transition transition)
     {
-        Debug.Log(currentState);
         switch (transition)
         {
             case Transition.EnterMainMenu:
@@ -63,11 +62,10 @@ public static class StateMachine
     {
         if (currentState.Equals(nextState))
         {
-            Debug.Log(nextState);
             return;
         }
 
-        PrintTransition(nextState);
+        //PrintTransition(nextState);
         State oldState = currentState;
         currentState = nextState;
         oldState?.OnExit();
