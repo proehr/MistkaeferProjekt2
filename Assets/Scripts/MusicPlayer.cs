@@ -5,27 +5,14 @@ using UnityEngine;
 public class MusicPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource[] music = null;
-    private void Awake()
-    {
-        int numMusicPlayer = FindObjectsOfType<MusicPlayer>().Length;
-        if (numMusicPlayer > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-    
     void Start()
     {
         PlayNextSong();
     }
 
     void PlayNextSong(){
-        AudioSource audio  = music[Random.Range(0,music.Length)];
+        AudioSource audio  = music[Random.Range(0,music.Length)]; // get random song
         audio.Play();
-        Invoke(nameof(PlayNextSong), audio.clip.length);
+        Invoke(nameof(PlayNextSong), audio.clip.length); // play next song, after the current one is done playing
     }
 }

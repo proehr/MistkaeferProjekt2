@@ -14,6 +14,4 @@ public class GameOverCanvas : ACanvas
     {
         StateMachine.TriggerTransition(Transition.EnterMainMenu);
     }
-
-
 }

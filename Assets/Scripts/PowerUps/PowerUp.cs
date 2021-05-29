@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/*
+ * Contains the Type and the spawn Count of the individual PowerUp
+ * Destroys PowerUp on collision
+ */
+
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] private PowerUpTypes powerUpType;
-    [SerializeField] private MeshRenderer[] meshRenderer;
-    [SerializeField] private Collider collider;
-    [SerializeField] private int count = 0;
+    [SerializeField] private int count = 0; // indicates how many times the PowerUp should be spawned
     public PowerUpTypes Type => powerUpType;
-    public int Count
+    public int Count => count;
+
+    // on collision with player, the powerUp gets destroyed
+    private void OnTriggerEnter(Collider other) 
     {
-        get => count;
-        set => count = value;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        meshRenderer[0].enabled = false;
-        meshRenderer[1].enabled = false;
-        collider.enabled = false;
+        Destroy(gameObject);
     }
 }
