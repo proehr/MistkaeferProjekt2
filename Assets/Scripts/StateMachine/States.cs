@@ -1,6 +1,4 @@
-﻿using UnityTemplateProjects;
-
-public static class States
+﻿public static class States
 {
     public static State mainMenu = MainMenuState.GetInstance();
     public static State setUp = SetUpState.GetInstance();
