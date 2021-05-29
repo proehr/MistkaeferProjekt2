@@ -14,25 +14,7 @@ public class BoardNavigation : MonoBehaviour
     {
         float rotationX = 0f;
         float rotationZ = 0f;
-        /*if (Input.GetKey(KeyCode.W))
-        {
-            rotationX += 0.1f;
-        }
-        if (Input.GetKey((KeyCode.S)))
-        {
-            rotationX -= 0.1f;
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            rotationZ += 0.1f;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            rotationZ -= 0.1f;
-        }*/
-
+        
         if (Input.GetMouseButton(0))
         {
             if (Input.mousePosition.x - previousXPosition < 0)

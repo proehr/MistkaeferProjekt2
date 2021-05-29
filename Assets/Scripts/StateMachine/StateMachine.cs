@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine
+public static class StateMachine
 {
     private static State currentState = States.mainMenu;
 
     public static void TriggerTransition(Transition transition)
     {
-        Debug.Log(currentState);
         switch (transition)
         {
             case Transition.EnterMainMenu:
@@ -63,11 +62,10 @@ public class StateMachine
     {
         if (currentState.Equals(nextState))
         {
-            Debug.Log(nextState);
             return;
         }
 
-        PrintTransition(nextState);
+        //PrintTransition(nextState);
         State oldState = currentState;
         currentState = nextState;
         oldState?.OnExit();

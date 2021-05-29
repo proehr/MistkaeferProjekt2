@@ -59,5 +59,15 @@ namespace Maze
             Destroy(mazeInstance.gameObject);
         }
 
+        public void setMazeSize(Vector2Int size)
+        {
+            mazeSize = size;
+        }
+
+        public void setHoleAmount(int amount)
+        {
+            holeAmount = amount;
+        }
+
     }
 }
