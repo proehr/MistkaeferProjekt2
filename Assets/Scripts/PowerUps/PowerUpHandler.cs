@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,13 +9,15 @@ public class PowerUpHandler : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidbody = null;
     [SerializeField] private int powerUpDuration = 5;
+    [SerializeField] private TextMeshProUGUI powerUpUIText;
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PowerUps"))   // if player picks-up a power up
         {
             PowerUpTypes upgradeType  = other.GetComponent<PowerUp>().Type;
-
+            powerUpUIText.text = upgradeType.ToString(); // set ui text
+            
             switch (upgradeType)
             {
                 case PowerUpTypes.AntiGravity:  
@@ -35,6 +38,7 @@ public class PowerUpHandler : MonoBehaviour
         rigidbody.useGravity = true;
         CancelInvoke(nameof(SpeedUp));
         rigidbody.drag = 0;
+        ResetUI();
     }
     
     // increases the drag on the player's rigidbody for a giving time
@@ -44,6 +48,7 @@ public class PowerUpHandler : MonoBehaviour
         yield return new WaitForSeconds(time);
  
         rigidbody.drag = 0;
+        ResetUI();
     }
     
     // turns off the players gravity, allowing for jumps over holes or walls 
@@ -53,6 +58,7 @@ public class PowerUpHandler : MonoBehaviour
         yield return new WaitForSeconds(time);
  
         rigidbody.useGravity = true;
+        ResetUI();
     }
     
     // increases the players speed for a certain amount of time 
@@ -62,6 +68,7 @@ public class PowerUpHandler : MonoBehaviour
         yield return new WaitForSeconds(time);
  
         CancelInvoke(nameof(SpeedUp)); 
+        ResetUI();
     }
     
     // accelerates the player
@@ -70,5 +77,9 @@ public class PowerUpHandler : MonoBehaviour
         rigidbody.AddForce(Physics.gravity * (20), ForceMode.Acceleration);
     }
 
+    private void ResetUI()
+    {
+        powerUpUIText.text = "";
+    }
 
 }
