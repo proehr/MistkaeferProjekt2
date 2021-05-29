@@ -9,7 +9,10 @@ public class MazeCell : MonoBehaviour
     private bool visited;
     private int path;
     private bool hasItem;
+    private bool hasHoles;
     public List<GameObject> buttresses = new List<GameObject>();
+    public List<GameObject> groundPieces = new List<GameObject>();
+    
 
     public void Initialize(int x, int y)
     {
@@ -57,5 +60,16 @@ public class MazeCell : MonoBehaviour
     {
         get => hasItem;
         set => hasItem = value;
+    }
+    
+    public bool HasHoles
+    {
+        get => hasHoles;
+        set => hasHoles = value;
+    }
+
+    public GameObject GetRandomGroundPiece()
+    {
+        return groundPieces[Random.Range(0, groundPieces.Count-1)];
     }
 }
