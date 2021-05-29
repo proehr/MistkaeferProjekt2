@@ -56,5 +56,10 @@ namespace Maze
             Destroy(mazeInstance.gameObject);
         }
 
+        public void setMazeSize(Vector2Int size)
+        {
+            mazeSize = size;
+        }
+
     }
 }
