@@ -809,6 +809,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1709584732308045599}
+  mainMenuBoard: {fileID: 4791314651541707240}
 --- !u!1 &2925894348516804529
 GameObject:
   m_ObjectHideFlags: 0

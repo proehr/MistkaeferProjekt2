@@ -8,6 +8,5 @@ public class StartButton : MonoBehaviour
     public void StartGame()
     {
         StateMachine.TriggerTransition(Transition.SetUpGame);
-        Debug.Log("starting game");
     }
 }

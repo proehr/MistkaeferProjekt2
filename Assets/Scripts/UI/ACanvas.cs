@@ -9,7 +9,6 @@ public abstract class ACanvas : MonoBehaviour
 
     protected void HideCanvas()
     {
-        Time.timeScale = 1f;
         canvasGroup.interactable = false;
         canvasGroup.alpha = 0f;
         canvasGroup.blocksRaycasts = false;
@@ -17,9 +16,18 @@ public abstract class ACanvas : MonoBehaviour
 
     protected void ShowCanvas()
     {
-        Time.timeScale = 0f;
         canvasGroup.interactable = true;
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+    }
+    
+    protected void PauseTime()
+    {
+        Time.timeScale = 0f;
+    }
+    
+    protected void ResumeTime()
+    {
+        Time.timeScale = 1f;
     }
 }

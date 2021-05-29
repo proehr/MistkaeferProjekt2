@@ -1,55 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityTemplateProjects;
 
-public class StateMachine : MonoBehaviour
+public class StateMachine
 {
     private static State currentState = States.mainMenu;
 
-    public static void ResetGame()
-    {
-        currentState = States.mainMenu;
-    }
-
     public static void TriggerTransition(Transition transition)
     {
-        Debug.Log("tranistion called");
+        Debug.Log(currentState);
         switch (transition)
         {
             case Transition.EnterMainMenu:
                 if (currentState == States.mainMenu || currentState == States.pause
-                                                || currentState == States.win || currentState == States.gameOver)
+                                                    || currentState == States.win || currentState == States.gameOver)
                 {
                     MakeTransition(States.mainMenu);
                 }
+
                 break;
             case Transition.SetUpGame:
                 if (currentState == States.setUp || currentState == States.mainMenu
-                                                    || currentState == States.win)
+                                                 || currentState == States.win)
                 {
-                    Debug.Log("triggered transition " + transition + " from " + currentState);
                     MakeTransition(States.setUp);
                 }
+
                 break;
             case Transition.PlayGame:
-                if (currentState == States.play || currentState == States.mainMenu
-                                               || currentState == States.pause)
+                if (currentState == States.play || currentState == States.pause
+                                                || currentState == States.setUp)
                 {
                     MakeTransition(States.play);
                 }
+
                 break;
             case Transition.PauseGame:
                 if (currentState == States.pause || currentState == States.play)
                 {
                     MakeTransition(States.pause);
                 }
+
                 break;
             case Transition.WinGame:
                 if (currentState == States.win || currentState == States.play)
                 {
                     MakeTransition(States.win);
                 }
+
                 break;
             case Transition.LoseGame:
                 if (currentState == States.gameOver || currentState == States.play)
@@ -61,17 +59,19 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    public static void MakeTransition(State nextState)
+    private static void MakeTransition(State nextState)
     {
         if (currentState.Equals(nextState))
         {
             Debug.Log(nextState);
             return;
         }
+
         PrintTransition(nextState);
-        currentState?.OnExit();
-        nextState?.OnEnter();
+        State oldState = currentState;
         currentState = nextState;
+        oldState?.OnExit();
+        nextState?.OnEnter();
     }
 
     private static void PrintTransition(State newState)

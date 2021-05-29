@@ -108,7 +108,7 @@ namespace Maze
         {
             MazeDirection randomDirection = MazeDirections.RandomValue;
             MazeCell chosenCell = GetNeighborCellInDirection(cell, randomDirection);
-            while (chosenCell == null && chosenCell.IsVisited())
+            while (chosenCell == null)
             {
                 randomDirection = MazeDirections.GetNext(randomDirection);
                 chosenCell = GetNeighborCellInDirection(cell, randomDirection);

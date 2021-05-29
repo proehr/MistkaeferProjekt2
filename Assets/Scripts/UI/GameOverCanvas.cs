@@ -1,10 +1,19 @@
 public class GameOverCanvas : ACanvas
 {
-    override protected void Start()
+    protected override void Start()
     {
         HideCanvas();
 
         GameOverState.OnEnterGameOverEvent += ShowCanvas;
+        GameOverState.OnEnterGameOverEvent += PauseTime;
         GameOverState.OnExitGameOverEvent += HideCanvas;
+        GameOverState.OnExitGameOverEvent += ResumeTime;
     }
+
+    public void ReturnToMainMenu()
+    {
+        StateMachine.TriggerTransition(Transition.EnterMainMenu);
+    }
+
+
 }
