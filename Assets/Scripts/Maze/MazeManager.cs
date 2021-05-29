@@ -18,19 +18,43 @@ namespace Maze
 
         public void Start()
         {
-            SetUpState.OnEnterSetUpEvent += StartMazeGeneration;
+            SetUpState.OnEnterSetUpEvent += GenerateMaze;
+            SetUpState.OnExitSetUpEvent += PlacePlayer;
+
+            MainMenuState.OnEnterMainMenuEvent += RemoveMaze;
+            MainMenuState.OnEnterMainMenuEvent += DeactivatePlayer;
         }
 
-        public void StartMazeGeneration()
+        public void GenerateMaze()
         {
+            if (mazeInstance != null)
+            {
+                RemoveMaze();
+            }
             mazeInstance = Instantiate(mazePrefab) as global::Maze.Maze;
             mazeInstance.GenerateMazeWithSize(mazeSize);
             ItemGenerator.Generate(mazeInstance, mazeItemPrefabList);
+            StateMachine.TriggerTransition(Transition.PlayGame);
         }
 
-        public void placePlayer()
+        public void PlacePlayer()
         {
-            ball.transform.position = mazeInstance.GetCell(0).transform.position;
+            ball.SetActive(true);
+            ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            ball.transform.position = mazeInstance.GetCell(0).transform.position + new Vector3(0,3,0);
         }
+        
+        
+        private void DeactivatePlayer()
+        {
+            ball.SetActive(false);
+        }
+        
+        private void RemoveMaze()
+        {
+            Destroy(mazeInstance.gameObject);
+        }
+
     }
 }

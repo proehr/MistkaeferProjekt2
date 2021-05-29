@@ -200,8 +200,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityTemplateProjects.GameOverHandler, Assembly-CSharp
+      - m_Target: {fileID: 1744534824}
+        m_TargetAssemblyTypeName: GameOverCanvas, Assembly-CSharp
         m_MethodName: ReturnToMainMenu
         m_Mode: 1
         m_Arguments:

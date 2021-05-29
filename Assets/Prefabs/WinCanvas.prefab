@@ -327,9 +327,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityTemplateProjects.WinHandler, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 1430710733}
+        m_TargetAssemblyTypeName: WinCanvas, Assembly-CSharp
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
