@@ -8,8 +8,13 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private PowerUpTypes powerUpType;
     [SerializeField] private MeshRenderer[] meshRenderer;
     [SerializeField] private Collider collider;
+    [SerializeField] private int count = 0;
     public PowerUpTypes Type => powerUpType;
-
+    public int Count
+    {
+        get => count;
+        set => count = value;
+    }
     private void OnTriggerEnter(Collider other)
     {
         meshRenderer[0].enabled = false;

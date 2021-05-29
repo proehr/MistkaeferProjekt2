@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7530604a139a4ebfb372056bd0bc084c, type: 3}
-  m_Name: Timer
+  m_Name: ScoringState
   m_EditorClassIdentifier: 
-  timer: 0
+  timer: 1.6432078
+  score: 2150

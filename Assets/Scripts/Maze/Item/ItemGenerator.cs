@@ -9,10 +9,10 @@ namespace Maze.Item
     {
         private static Maze maze;
         
-        public static void Generate(Maze maze, List<MazeItem> mazeItemPrefabList)
+        public static void Generate(Maze maze, List<PowerUp> mazeItemPrefabList)
         {
             ItemGenerator.maze = maze;
-            foreach (MazeItem mazeItemPrefab in mazeItemPrefabList)
+            foreach (PowerUp mazeItemPrefab in mazeItemPrefabList)
             {
                 switch (mazeItemPrefab)
                 {
@@ -23,7 +23,7 @@ namespace Maze.Item
             }
         }
         
-        private static void GenerateRandomInMaze(MazeItem mazeItemPrefab)
+        private static void GenerateRandomInMaze(PowerUp mazeItemPrefab)
         {
             for (int i = 0; i < mazeItemPrefab.Count; i++)
             {
@@ -35,8 +35,9 @@ namespace Maze.Item
 
         public static MazeCell GetRandomEmptyCell()
         {
-            MazeCell cell = null;
-            while (cell == null || cell.HasItem)
+            MazeCell cell = null;                 // no item is spawned on the start and end positions
+            while ((cell == null || cell.HasItem) || ((cell.GetY() == 0 && cell.GetX() == 0) 
+                                                  || ((cell.GetY() == maze.Size.y-1 && cell.GetX() == maze.Size.x-1))))
             {
                 cell = maze.GetRandomCell();
             }

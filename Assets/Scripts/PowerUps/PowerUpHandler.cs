@@ -7,49 +7,37 @@ using UnityEngine.Serialization;
 public class PowerUpHandler : MonoBehaviour
 {
     [SerializeField] private Rigidbody rigidbody = null;
-    [SerializeField] private bool speedUp = false;
+    [SerializeField] private int powerUpDuration = 5;
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PowerUps"))
+        if (other.CompareTag("PowerUps"))   // if player picks-up a power up
         {
             PowerUpTypes upgradeType  = other.GetComponent<PowerUp>().Type;
 
             switch (upgradeType)
             {
-                case PowerUpTypes.AntiGravity:
-                    rigidbody.useGravity = false;
-                    StartCoroutine(TurnGravityOff( 2));
+                case PowerUpTypes.AntiGravity:  
+                    StartCoroutine(TurnGravityOff( powerUpDuration/2));
                     break;
                 case PowerUpTypes.SpeedDown:
-                    // transform.Translate(Vector3.forward * _rigidbody.velocity.magnitude/2 * Time.deltaTime);
-                    StartCoroutine(IncreaseDrag( 10, 3));
+                    StartCoroutine(IncreaseDrag( powerUpDuration, 3));
                     break;
                 case PowerUpTypes.SpeedUp:
-                    speedUp = true;
-                    StartCoroutine(IncreaseSpeed( 10));
-                    //_rigidbody.velocity.Set(_rigidbody.velocity.x * 2,_rigidbody.velocity.x * 2,_rigidbody.velocity.x * 2);
+                    StartCoroutine(IncreaseSpeed( powerUpDuration));
                     break;
-                
             }
-            
         }
     }
-
-    private void SpeedUp()
+    // called on game over
+    public void ResetEffects()  
     {
-       // _rigidbody.AddForce(_rigidbody.velocity.x * 5,_rigidbody.velocity.x * 5,_rigidbody.velocity.x * 5);
-       rigidbody.AddForce(Physics.gravity * (30), ForceMode.Acceleration);
-    }
-
-    private IEnumerator IncreaseSpeed(float time)
-    {
-        InvokeRepeating(nameof(SpeedUp),0, 0.2f);
-        yield return new WaitForSeconds(time);
- 
+        rigidbody.useGravity = true;
         CancelInvoke(nameof(SpeedUp));
-        speedUp = false;
+        rigidbody.drag = 0;
     }
+    
+    // increases the drag on the player's rigidbody for a giving time
     private IEnumerator IncreaseDrag(float time, int drag)
     {
         rigidbody.drag = drag;
@@ -57,10 +45,30 @@ public class PowerUpHandler : MonoBehaviour
  
         rigidbody.drag = 0;
     }
+    
+    // turns off the players gravity, allowing for jumps over holes or walls 
     private IEnumerator TurnGravityOff(float time)
     {
+        rigidbody.useGravity = false;
         yield return new WaitForSeconds(time);
  
         rigidbody.useGravity = true;
     }
+    
+    // increases the players speed for a certain amount of time 
+    private IEnumerator IncreaseSpeed(float time)
+    {
+        InvokeRepeating(nameof(SpeedUp),0, 0.2f); // calls SpeedUp every 0.2 seconds
+        yield return new WaitForSeconds(time);
+ 
+        CancelInvoke(nameof(SpeedUp)); 
+    }
+    
+    // accelerates the player
+    private void SpeedUp()
+    {
+        rigidbody.AddForce(Physics.gravity * (20), ForceMode.Acceleration);
+    }
+
+
 }
