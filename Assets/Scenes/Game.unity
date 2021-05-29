@@ -660,6 +660,10 @@ PrefabInstance:
       propertyPath: ball
       value: 
       objectReference: {fileID: 2077758504}
+    - target: {fileID: 8088661113703357138, guid: e9bbfed2163eb154cb65e45e77bb3575, type: 3}
+      propertyPath: holeAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8088661113703357139, guid: e9bbfed2163eb154cb65e45e77bb3575, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -883,10 +887,6 @@ PrefabInstance:
     - target: {fileID: 2836560551183850967, guid: d15771b682f4acf4b9b65f7c0d6e52b4, type: 3}
       propertyPath: m_Name
       value: Ball
-      objectReference: {fileID: 0}
-    - target: {fileID: 2836560551183850967, guid: d15771b682f4acf4b9b65f7c0d6e52b4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2836560551183850971, guid: d15771b682f4acf4b9b65f7c0d6e52b4, type: 3}
       propertyPath: m_RootOrder

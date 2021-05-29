@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Maze.Holes;
 using Maze.Item;
 using UnityEditor;
 using UnityEngine;
@@ -11,8 +12,9 @@ namespace Maze
     {
         [SerializeField] private Maze mazePrefab = null;
         [SerializeField] private List<MazeItem> mazeItemPrefabList = new List<MazeItem>();
+        [SerializeField] private int holeAmount = 0;
         [SerializeField] private Vector2Int mazeSize = new Vector2Int(0, 0);
-        [SerializeField] private GameObject ball;
+        [SerializeField] private GameObject ball = null;
 
         private Maze mazeInstance;
 
@@ -34,6 +36,7 @@ namespace Maze
             mazeInstance = Instantiate(mazePrefab) as global::Maze.Maze;
             mazeInstance.GenerateMazeWithSize(mazeSize);
             ItemGenerator.Generate(mazeInstance, mazeItemPrefabList);
+            HoleGenerator.Generate(mazeInstance, holeAmount);
             StateMachine.TriggerTransition(Transition.PlayGame);
         }
 
