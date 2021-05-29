@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7530604a139a4ebfb372056bd0bc084c, type: 3}
   m_Name: ScoringState
   m_EditorClassIdentifier: 
-  timer: 0
-  score: 1105
+  timer: 1.6432078
+  score: 2150

@@ -44,5 +44,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazePrefab: {fileID: 5415752674039444010, guid: eadaf20d31c3e92478b77f4c647c4983, type: 3}
-  mazeItemPrefabList: []
+  mazeItemPrefabList:
+  - {fileID: 3642979175865779692, guid: 0d82c76119a90314f9f698997954e113, type: 3}
+  - {fileID: 359937346469672067, guid: 8a2fb6db8e1711448be35e5b54e91c06, type: 3}
+  - {fileID: 7498208347900995893, guid: 93b7c6130821f1141b0fd16abfdd7a78, type: 3}
+  holeAmount: 10
   mazeSize: {x: 5, y: 5}
+  ball: {fileID: 0}

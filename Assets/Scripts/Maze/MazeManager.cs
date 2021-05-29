@@ -11,7 +11,7 @@ namespace Maze
     public class MazeManager : MonoBehaviour
     {
         [SerializeField] private Maze mazePrefab = null;
-        [SerializeField] private List<MazeItem> mazeItemPrefabList = new List<MazeItem>();
+        [SerializeField] private List<PowerUp> mazeItemPrefabList = new List<PowerUp>();
         [SerializeField] private int holeAmount = 0;
         [SerializeField] private Vector2Int mazeSize = new Vector2Int(0, 0);
         [SerializeField] private GameObject ball = null;
