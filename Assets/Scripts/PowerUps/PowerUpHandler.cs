@@ -11,6 +11,11 @@ public class PowerUpHandler : MonoBehaviour
     [SerializeField] private int powerUpDuration = 5;
     [SerializeField] private TextMeshProUGUI powerUpUIText;
     
+    private void Start()
+    {
+        SetUpState.OnEnterSetUpEvent += ResetEffects;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PowerUps"))   // if player picks-up a power up

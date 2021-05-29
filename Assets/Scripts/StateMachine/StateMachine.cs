@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateMachine
+public static class StateMachine
 {
     private static State currentState = States.mainMenu;
 

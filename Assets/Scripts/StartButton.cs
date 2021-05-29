@@ -15,14 +15,14 @@ public class StartButton : MonoBehaviour
     {
         mazeManager.setMazeSize(new Vector2Int(5, 5));
         mazeManager.setHoleAmount(10);
-        mainCamera.transform.position = new Vector3(0f, 14.5f, 0f);
+        mainCamera.transform.position = new Vector3(0f, 16f, 0f);
         StartGame();
     }
     public void NormalMaze()
     {
         mazeManager.setMazeSize(new Vector2Int(6, 6));
         mazeManager.setHoleAmount(20);
-        mainCamera.transform.position = new Vector3(0f, 17.0f, -1.5f);
+        mainCamera.transform.position = new Vector3(0f, 18.5f, -1.5f);
         StartGame();
     }
     
@@ -30,7 +30,7 @@ public class StartButton : MonoBehaviour
     {
         mazeManager.setMazeSize(new Vector2Int(7,7));
         mazeManager.setHoleAmount(30);
-        mainCamera.transform.position = new Vector3(0f, 19.5f, 0f);
+        mainCamera.transform.position = new Vector3(0f, 21f, 0f);
         StartGame();
     }
     
