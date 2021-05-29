@@ -17,7 +17,7 @@ namespace Maze
         
         private static void WalkFromRandomCells()
         {
-            for (int i = 1; i < maze.GetCellAmount(); i++)
+            for (int i = 1; i < maze.GetCellAmount()*2; i++)
             {
                 MazeCell randomCell = maze.GetRandomCell();
                 if (randomCell.IsVisited())
