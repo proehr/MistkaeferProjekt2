@@ -19,15 +19,15 @@ public class StartButton : MonoBehaviour
     }
     public void NormalMaze()
     {
-        mazeManager.setMazeSize(new Vector2Int(7, 7));
-        mainCamera.transform.position = new Vector3(0f, 19.5f, 0f);
+        mazeManager.setMazeSize(new Vector2Int(6, 6));
+        mainCamera.transform.position = new Vector3(0f, 17.0f, -1.5f);
         StartGame();
     }
     
     public void HardMaze()
     {
-        mazeManager.setMazeSize(new Vector2Int(9,9));
-        mainCamera.transform.position = new Vector3(0f, 24.5f, 0f);
+        mazeManager.setMazeSize(new Vector2Int(7,7));
+        mainCamera.transform.position = new Vector3(0f, 19.5f, 0f);
         StartGame();
     }
     
