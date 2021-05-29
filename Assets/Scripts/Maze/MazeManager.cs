@@ -4,7 +4,6 @@ using Maze.Holes;
 using Maze.Item;
 using UnityEditor;
 using UnityEngine;
-using UnityTemplateProjects;
 
 namespace Maze
 {
