@@ -54,7 +54,17 @@ Any tutorials used will be linked here.
 
 ## Resources
 
-Asset store content etc. will be linked here.
+#### "Asset Store" contents 
+* [LowPoly Sci-Fi Crates Free](https://assetstore.unity.com/packages/3d/props/lowpoly-sci-fi-crates-free-146016)
+* [Unity Samples: UI](https://assetstore.unity.com/packages/essentials/unity-samples-ui-25468)
+* [3D Scifi Kit Starter Kit](https://assetstore.unity.com/packages/3d/environments/3d-scifi-kit-starter-kit-92152)
+* [Yughues Free Metal Materials](https://assetstore.unity.com/packages/2d/textures-materials/metals/yughues-free-metal-materials-12949)
+
+#### Music contents
+* [Approaching Mars by Arthur Vyncke](https://www.free-stock-music.com/arthur-vyncke-approaching-mars.html)
+* [Signal To Noise by Scott Buckley](https://www.free-stock-music.com/scott-buckley-signal-to-noise.html)
+* [Adrift by Hayden Folker](https://www.free-stock-music.com/hayden-folker-adrift.html)
+* [Cloud Nine by Hayden Folker](https://www.free-stock-music.com/hayden-folker-cloud-nine.html)
 
 ## Authors (sorted alphabetically)
 * **Bartholomäus Berresheim** - [Github](https://github.com/Silices)

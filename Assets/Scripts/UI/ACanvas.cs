@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
-
+/*
+ * Super class for all canvases
+ */
 public abstract class ACanvas : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
-
+/*
+ * Canvas containing the timer, score and PowerUp-Effect indicator 
+ */
 public class GUICanvas : ACanvas
 {
     [SerializeField] private List<GameObject> components = new List<GameObject>();

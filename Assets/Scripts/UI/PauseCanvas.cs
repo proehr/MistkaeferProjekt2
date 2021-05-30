@@ -12,7 +12,6 @@ public class PauseCanvas: ACanvas
         PauseState.OnExitPauseEvent += ResumeTime;
     }
 
-
     public void ResumeGame()
     {
         StateMachine.TriggerTransition(Transition.PlayGame);
@@ -22,5 +21,4 @@ public class PauseCanvas: ACanvas
     {
         StateMachine.TriggerTransition(Transition.EnterMainMenu);
     }
-    
 }
