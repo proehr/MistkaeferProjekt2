@@ -16,6 +16,11 @@ public class StartButton : MonoBehaviour
         mazeManager.setMazeSize(new Vector2Int(5, 5));
         mazeManager.setHoleAmount(10);
         mainCamera.transform.position = new Vector3(0f, 16f, 0f);
+
+        ScoreManager.initialRoundScore = 500;
+        ScoreManager.minRoundScore = 50;
+        ScoreManager.minAmountSeconds = 15;
+        
         StartGame();
     }
     public void NormalMaze()
@@ -23,6 +28,11 @@ public class StartButton : MonoBehaviour
         mazeManager.setMazeSize(new Vector2Int(6, 6));
         mazeManager.setHoleAmount(20);
         mainCamera.transform.position = new Vector3(0f, 18.5f, -1.5f);
+        
+        ScoreManager.initialRoundScore = 1000;
+        ScoreManager.minRoundScore = 100;
+        ScoreManager.minAmountSeconds = 20;
+        
         StartGame();
     }
     
@@ -31,6 +41,11 @@ public class StartButton : MonoBehaviour
         mazeManager.setMazeSize(new Vector2Int(7,7));
         mazeManager.setHoleAmount(30);
         mainCamera.transform.position = new Vector3(0f, 21f, 0f);
+        
+        ScoreManager.initialRoundScore = 2000;
+        ScoreManager.minRoundScore = 200;
+        ScoreManager.minAmountSeconds = 25;
+        
         StartGame();
     }
     

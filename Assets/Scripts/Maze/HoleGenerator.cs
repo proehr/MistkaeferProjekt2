@@ -4,6 +4,8 @@ namespace Maze.Holes
 {
     public class HoleGenerator : MonoBehaviour
     {
+        
+        // Removes a random floor piece in given amount of random Maze Cells
         public static void Generate(Maze maze, int amount)
         {
             for (int i = 0; i < amount; i++)

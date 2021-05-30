@@ -3,10 +3,15 @@ using UnityEngine;
 
 namespace Maze
 {
-    public static class MazeGenerator
+    public static class HuntAndKillMazeGenerator
     {
         private static Maze maze;
 
+        
+        /**
+         * The Hunt-And-Kill algorithm walks randomly from starting location (0,0) once
+         * Then walks from random cells until all cells have been visited.
+         */
         public static void HuntAndKill(Maze mazeInstance)
         {
             maze = mazeInstance;
@@ -26,6 +31,12 @@ namespace Maze
                 }
             }
         }
+        
+        /**
+         * Walk algorithm chooses unvisited cell in random direction from current cell and
+         * removes walls between cells to free the way for the player
+         * until current cell has no unvisited neighbors
+         */
         private static void WalkFromCell(MazeCell startingCell)
         {
             MazeCell currentCell = startingCell;
@@ -92,6 +103,9 @@ namespace Maze
             }
         }
         
+        /**
+         * checks all cells and connects them if they havent been visited
+         */
         private static void EliminateIsolatedCells()
         {
             for (int i = 1; i < maze.GetCellAmount(); i++)
@@ -104,6 +118,9 @@ namespace Maze
             }
         }
 
+        /**
+         * chooses random direction to connect cell to and removes walls
+         */
         private static void ConnectCell(MazeCell cell)
         {
             MazeDirection randomDirection = MazeDirections.RandomValue;

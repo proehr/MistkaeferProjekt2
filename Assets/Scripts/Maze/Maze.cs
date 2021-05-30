@@ -30,7 +30,7 @@ namespace Maze
             InitAllCells();
             InitAllWalls();
 
-            MazeGenerator.HuntAndKill(this);
+            HuntAndKillMazeGenerator.HuntAndKill(this);
         }
 
         private void InitAllCells()
@@ -103,6 +103,8 @@ namespace Maze
                 cell.buttresses.Add(buttress);
             }
         }
+        
+        // ---------------------- GETTERS & SETTERS ------------------------ //
 
         public int GetCellAmount()
         {

@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Maze.Item
 {
+
     public class ItemGenerator : MonoBehaviour
     {
         private static Maze maze;
         
-        public static void Generate(Maze maze, List<PowerUp> mazeItemPrefabList)
+        /**
+         * Places all given Items in the given maze
+         */
+        public static void Generate(Maze generationMaze, List<PowerUp> mazeItemPrefabList)
         {
-            ItemGenerator.maze = maze;
+            ItemGenerator.maze = generationMaze;
             foreach (PowerUp mazeItemPrefab in mazeItemPrefabList)
             {
                 switch (mazeItemPrefab)
@@ -33,7 +35,7 @@ namespace Maze.Item
             }
         }
 
-        public static MazeCell GetRandomEmptyCell()
+        private static MazeCell GetRandomEmptyCell()
         {
             MazeCell cell = null;                 // no item is spawned on the start and end positions
             while ((cell == null || cell.HasItem) || ((cell.GetY() == 0 && cell.GetX() == 0) 
