@@ -6,10 +6,15 @@ using UnityEngine.UI;
 
 public class BoardNavigation : MonoBehaviour
 {
+    /** two floats to handle the previous position of the mouse */
     private float previousXPosition = 0f;
     private float previousYPostion = 0f;
-
-    // Update is called once per frame
+    
+    /**
+     * the board rotation is handled by taking the difference between the previous mouse position
+     * and the current mouse position when the left mouse button is pressed
+     * the result sets the direction of the board rotation
+     */
     void FixedUpdate()
     {
         float rotationX = 0f;

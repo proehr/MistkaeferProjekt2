@@ -11,6 +11,9 @@ public class StartButton : MonoBehaviour
     [SerializeField] private MazeManager mazeManager;
     [SerializeField] private Camera mainCamera;
 
+    /**
+     * sets maze size and camera position for easy maze condition
+     */
     public void EasyMaze()
     {
         mazeManager.setMazeSize(new Vector2Int(5, 5));
@@ -23,6 +26,10 @@ public class StartButton : MonoBehaviour
         
         StartGame();
     }
+    
+    /**
+     * sets maze size and camera position for normal maze condition
+     */
     public void NormalMaze()
     {
         mazeManager.setMazeSize(new Vector2Int(6, 6));
@@ -36,6 +43,9 @@ public class StartButton : MonoBehaviour
         StartGame();
     }
     
+    /**
+     * sets maze size and camera position for hard maze condition
+     */
     public void HardMaze()
     {
         mazeManager.setMazeSize(new Vector2Int(7,7));
@@ -49,6 +59,9 @@ public class StartButton : MonoBehaviour
         StartGame();
     }
     
+    /**
+     * triggers the transition from MainMenu to SetUpGame 
+     */
     public void StartGame()
     {
         StateMachine.TriggerTransition(Transition.SetUpGame);

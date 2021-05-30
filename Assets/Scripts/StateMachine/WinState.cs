@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class WinState : State
 {
     private static State instance;
@@ -24,6 +23,9 @@ public class WinState : State
         }
     }
 
+    /**
+     * returns instance of WinState and creates an instance if one doesn't exist
+     */
     public static State GetInstance()
     {
         if (instance == null)

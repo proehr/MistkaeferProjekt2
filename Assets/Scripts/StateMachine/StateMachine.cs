@@ -6,6 +6,9 @@ public static class StateMachine
 {
     private static State currentState = States.mainMenu;
 
+    /**
+     * checks whether triggered transition is valid and starts transition if possible
+     */
     public static void TriggerTransition(Transition transition)
     {
         switch (transition)
@@ -58,6 +61,10 @@ public static class StateMachine
         }
     }
 
+    /**
+     * calls exit and enter for the new and the old state
+     * sets new state as current state
+     */
     private static void MakeTransition(State nextState)
     {
         if (currentState.Equals(nextState))
@@ -72,6 +79,9 @@ public static class StateMachine
         nextState?.OnEnter();
     }
 
+    /**
+     * method to check which transition is happening
+     */
     private static void PrintTransition(State newState)
     {
         Debug.Log("Transitioning from " + currentState + "  to " + newState);

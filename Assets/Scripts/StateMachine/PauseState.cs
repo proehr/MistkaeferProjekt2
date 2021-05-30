@@ -22,6 +22,9 @@ public class PauseState : State
         }
     }
 
+    /**
+     * returns instance of PauseState and creates an instance if one doesn't exist
+     */
     public static State GetInstance()
     {
         if (instance == null)
