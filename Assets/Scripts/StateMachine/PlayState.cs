@@ -24,6 +24,9 @@ public class PlayState : State
         }
     }
     
+    /**
+     * returns instance of PlayState and creates an instance if one doesn't exist
+     */
     public static State GetInstance()
     {
         if (instance == null)

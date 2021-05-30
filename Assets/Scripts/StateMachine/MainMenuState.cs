@@ -13,10 +13,6 @@ using UnityEngine.SceneManagement;
             {
                 OnEnterMainMenuEvent();
             }
-            /*if (SceneManager.GetActiveScene().buildIndex != 0)
-            {
-                SceneManager.LoadScene(0);
-            }*/
         }
 
         public override void OnExit()
@@ -25,9 +21,11 @@ using UnityEngine.SceneManagement;
             {
                 OnExitMainMenuEvent();
             }
-            /*SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);*/
         }
 
+        /**
+        * returns instance of MainMenuState and creates an instance if one doesn't exist
+        */
         public static State GetInstance()
         {
             if (instance == null)
