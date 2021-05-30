@@ -26,6 +26,9 @@ namespace Maze
             MainMenuState.OnEnterMainMenuEvent += DeactivatePlayer;
         }
 
+        /**
+         * Creates maze, including its items and holes
+         */
         public void GenerateMaze()
         {
             if (mazeInstance != null)

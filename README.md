@@ -50,7 +50,7 @@ If you want to share Scene Elements with your team, create [Prefabs](https://doc
 
 ## References
 
-Any tutorials used will be linked here.
+* Timer: [Unity How to use ScriptableObjects for handling Game State - Tutorial](https://youtu.be/55eB8_CctAM)
 
 ## Resources
 
