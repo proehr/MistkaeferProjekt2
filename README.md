@@ -9,7 +9,7 @@ More about general [Development Guidelines](#development-guidelines)
 
 * #### Controls for player movement
 
-
+Left-Click and drag to move the board.  
 
 ## Built With
 Software
